@@ -37,12 +37,15 @@ function matchWord(wordArray, str) {
 
 console.log(matchWord(myArray, "PakistanZindabad"));
 
-function camelize(str) {
-    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+function camelCase(str) {
+	var newString = str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
       return index === 0 ? word.toLowerCase() : word.toUpperCase();
-    }).replace(/\s+/g, '');
-  }
+    }).replace(/\s+/g, '')
+  return newString;
+}
 
-console.log(camelize('Aamir Pinger'))
-console.log(camelize('Aamir pinger'))
-console.log(camelize('aamir pinger'))
+function convertToCamelCase() {
+  var str = document.testForm.theString.value;
+  var newString = camelCase(str);
+  document.getElementById('str').value = newString;
+}
