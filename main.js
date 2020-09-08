@@ -38,7 +38,7 @@ function matchWord(wordArray, str) {
 console.log(matchWord(myArray, "PakistanZindabad"));
 
 function camelCase(str) {
-	var newString = str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+	var newString = str.replace(/(?:^\w|[-_][A-Z]|\b\w)/ig, function(word, index) {
       return index === 0 ? word.toLowerCase() : word.toUpperCase();
     }).replace(/\s+/g, '')
   return newString;
@@ -49,3 +49,12 @@ function convertToCamelCase() {
   var newString = camelCase(str);
   document.getElementById('str').value = newString;
 }
+
+const convert = (word) => {
+    return word.split('_').map((element,index) =>
+      index === 0 ? element.toLowerCase() : element.charAt(0).toUpperCase() + element.slice(1)
+    ).join('');
+  };
+  
+  const convertedWord = convert("Aamir_Pinger");
+  console.log(convertedWord)
